@@ -170,6 +170,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -181,8 +184,13 @@
     <Compile Include="Migrations\202303201202224_Init_ASP_IdentityModel.designer.cs">
       <DependentUpon>202303201202224_Init_ASP_IdentityModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303210049524_AlterProduct_Table.cs" />
+    <Compile Include="Migrations\202303210049524_AlterProduct_Table.designer.cs">
+      <DependentUpon>202303210049524_AlterProduct_Table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -193,6 +201,27 @@
     <Compile Include="Ultils\Ultils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Content\startbootstrap-sb-admin-gh-pages\401.html" />
+    <Content Include="Areas\Admin\Content\startbootstrap-sb-admin-gh-pages\404.html" />
+    <Content Include="Areas\Admin\Content\startbootstrap-sb-admin-gh-pages\500.html" />
+    <Content Include="Areas\Admin\Content\startbootstrap-sb-admin-gh-pages\assets\demo\chart-area-demo.js" />
+    <Content Include="Areas\Admin\Content\startbootstrap-sb-admin-gh-pages\assets\demo\chart-bar-demo.js" />
+    <Content Include="Areas\Admin\Content\startbootstrap-sb-admin-gh-pages\assets\demo\chart-pie-demo.js" />
+    <Content Include="Areas\Admin\Content\startbootstrap-sb-admin-gh-pages\assets\demo\datatables-demo.js" />
+    <Content Include="Areas\Admin\Content\startbootstrap-sb-admin-gh-pages\assets\img\error-404-monochrome.svg" />
+    <Content Include="Areas\Admin\Content\startbootstrap-sb-admin-gh-pages\charts.html" />
+    <Content Include="Areas\Admin\Content\startbootstrap-sb-admin-gh-pages\css\styles.css" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Shared\_layoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Content\startbootstrap-sb-admin-gh-pages\js\datatables-simple-demo.js" />
+    <Content Include="Areas\Admin\Content\startbootstrap-sb-admin-gh-pages\js\scripts.js" />
+    <Content Include="Areas\Admin\Content\startbootstrap-sb-admin-gh-pages\layout-sidenav-light.html" />
+    <Content Include="Areas\Admin\Content\startbootstrap-sb-admin-gh-pages\layout-static.html" />
+    <Content Include="Areas\Admin\Content\startbootstrap-sb-admin-gh-pages\login.html" />
+    <Content Include="Areas\Admin\Content\startbootstrap-sb-admin-gh-pages\password.html" />
+    <Content Include="Areas\Admin\Content\startbootstrap-sb-admin-gh-pages\register.html" />
+    <Content Include="Areas\Admin\Content\startbootstrap-sb-admin-gh-pages\tables.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -262,6 +291,7 @@
     <Content Include="Content\NoiThat\js\bootstrap.bundle.min.js.map" />
     <Content Include="Content\NoiThat\js\bootstrap.js.map" />
     <Content Include="Content\NoiThat\js\bootstrap.min.js.map" />
+    <Content Include="Areas\Admin\Views\web.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -312,10 +342,12 @@
     <Content Include="Views\SanPham\__ThemSanPham.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
-    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\ViewCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Content\NoiThat\fonts\" />
   </ItemGroup>
   <ItemGroup>
@@ -334,6 +366,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202303201202224_Init_ASP_IdentityModel.resx">
       <DependentUpon>202303201202224_Init_ASP_IdentityModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303210049524_AlterProduct_Table.resx">
+      <DependentUpon>202303210049524_AlterProduct_Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -17,27 +17,58 @@ namespace baitapltw.Controllers
             var product = dbContext.Products.FirstOrDefault(x => x.Id == id);
             return View(product);
         }
-        public ActionResult Create()
+        public ActionResult AddCart(int id)
         {
-            var ds = dbContext.Categories.ToList();
-            ViewBag.categories = ds;
+            Product product = dbContext.Products.Find(id);
+            if (Session["cart"] == null)
+            {
+                List<CartItem> cart = (List<CartItem>)Session["cart"];
+                cart.Add(new CartItem { Product = product, Quantity = 1 });
+                Session["cart"] = cart;
+            }
+            else
+            {
+                List<CartItem> cart = (List<CartItem>)Session["cart"];
+                int index = isExist(id);
+                if (index != -1)
+                {
+                    cart[index].Quantity++;
+                }
+                else
+                {
+                    cart.Add(new CartItem { Product = product, Quantity = 1 });
+                }
+                Session["cart"] = cart;
+            }
+            return RedirectToAction("ViewCart");
+        }
+        private int isExist(int id)
+        {
+            List<CartItem> cart = (List<CartItem>)Session["cart"];
+            for (int i = 0; i < cart.Count; i++)
+                if (cart[i].Product.Id.Equals(id))
+                    return i;
+            return -1;
+        }
+        public ActionResult ViewCart() 
+        {
             return View();
         }
-        [HttpPost]
-        public ActionResult SaveProduct(Product product, HttpPostedFileBase FeatureImage)
-        {
-            if(!ModelState.IsValid)
-            {
-                var ds = dbContext.Categories.ToList();
-                ViewBag.categories = ds;
-                return View("Create",product);
-            }
-            string path = Path.Combine(Server.MapPath("~/Content/NoiThat/images"), Path.GetFileName(FeatureImage.FileName));
-            FeatureImage.SaveAs(path);
-            product.FeatureImage = "Content/NoiThat/images/" + Path.GetFileName(FeatureImage.FileName);
-            dbContext.Products.Add(product);
-            dbContext.SaveChanges();
-            return RedirectToAction("Index", "Home");
-        }
+        //public ActionResult UpdateCart() 
+        //{
+        //    int productId = int.Parse(Request.Form["productId"]);
+        //    int quantity = int.Parse(Request.Form["quantity"]);
+        //    List<CartItem> cart = (List<CartItem>)Session["cart"];
+        //    int index = isExist(productId);
+        //    if (index != -1)
+        //    {
+        //        cart[index].Quantity++;
+        //    }
+        //    else
+        //    {
+        //        cart.Add(new CartItem { Product = product, Quantity = 1 });
+        //    }
+        //    return RedirectToAction("ViewCart");
+        //}
     }
 }
