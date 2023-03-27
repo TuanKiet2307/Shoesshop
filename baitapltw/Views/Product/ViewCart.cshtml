@@ -5,16 +5,7 @@
 }
 @using baitapltw.Models
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Cart</title>
-</head>
-<body>
-
-    <h3>Cart Page</h3>
     <table cellpadding="2" cellspacing="2" border="1">
         <tr>
             <th>Option</th>
@@ -40,12 +31,14 @@
                 <td><a href="@Url.Action("Remove", "Cart", new { id = item.Product.Id })">Remove</a></td>
                 <td>@item.Product.Id</td>
                 <td>@item.Product.Title</td>
-                <td><img src="~/@item.Product.FeatureImage" width="60" /> </td>
+                <td><img src="@item.Product.FeatureImage" width="60" /> </td>
                 <td>@item.Product.Price</td>
                 <td>
-                    <input type="number" min="1" name="quanity" value="@item.Quantity"/>
-                    <input type="hidden"/ value="@item.Product.Id" name="productId">
-                    <input type="submit" value="Update"/>
+                    <form action="/Product/UpdateCart" method="post">
+                        <input type="number" min="1" name="quantity" value="@item.Quantity" />
+                        <input type="hidden" value="@item.Product.Id" name="productId">
+                        <input type="submit" value="Update" />
+                    </form>
                 </td>                
                 <td>@(item.Product.Price * item.Quantity)</td>
             </tr>
@@ -65,6 +58,4 @@
     <br>
     <a href="@Url.Action("Index", "Product")">Continue Shopping</a>
 
-</body>
-</html>
 
