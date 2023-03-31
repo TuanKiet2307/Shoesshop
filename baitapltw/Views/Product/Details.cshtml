@@ -3,40 +3,74 @@
 @{
     ViewBag.Title = "Details";
 }
+@using System.Globalization;
 
-
-<div class="contact_section layout_padding">
-    <div class="container">
-        <div class="contact_section_2">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="mail_section_1">
-                        <div class="card" style="width: 18rem;">
-                            <img src="@Model.FeatureImage" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">@Model.Title</h5>
-                                <p class="card-text">@Model.Des</p>
+@*<div class="contact_section layout_padding">
+        <div class="container">
+            <div class="contact_section_2">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mail_section_1">
+                            <div class="card" style="width: 18rem;">
+                                <img src="@Model.FeatureImage" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">@Model.Title</h5>
+                                    <p class="card-text">@Model.Des</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">@Model.Id</li>
+                                    <li class="list-group-item">@Model.Price</li>
+                                    <li class="list-group-item">@Model.Category.Title</li>
+                                </ul>
+                                <div class="card-body">
+                                    <a href="#" class="card-link">@baitapltw.Ultils.Ultils.NumberToText((double)Model.Price)</a>
+                                </div>
                             </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">@Model.Id</li>
-                                <li class="list-group-item">@Model.Price</li>
-                                <li class="list-group-item">@Model.Category.Title</li>
-                            </ul>
-                            <div class="card-body">
-                                <a href="#" class="card-link">@baitapltw.Ultils.Ultils.NumberToText((double)Model.Price)</a>
-                            </div>
+                            <div class="send_bt"><a href="#">Đặt Hàng</a></div>
                         </div>
-                        <div class="send_bt"><a href="#">Đặt Hàng</a></div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="map_main">
-                        <div class="map-responsive">
-                            <img src="@Model.FeatureImage" />
+                    <div class="col-md-6">
+                        <div class="map_main">
+                            <div class="map-responsive">
+                                <img src="@Model.FeatureImage" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>*@
+<div class="product">
+    <div class="body">
+        <div class="left-info">
+            <img src="@Model.FeatureImage" class="img-shoes">
+        </div>
+        <div class="right-info">
+            <div class="product-rating">
+                <div class="rating">
+                    <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                    <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                    <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                    <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                    <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                </div>
+            </div>
+            <h1 class="shoes-title">@Model.Title</h1>
+            <p class="product-category">Mã SP: <strong>@Model.Id</strong></p>
+            <p class="product-category">Loại SP: <strong>@Model.Category.Title</strong></p>
+            <h3 class="product-price">@string.Format(new CultureInfo("vi-VN", false), "{0:c0}", @Model.Price)</h3>
+            <div class="addToCart">
+                <ul class="quantum">
+                    <li><i class="fa-solid fa-minus"></i></li>
+                    <li>1</li>
+                    <li><i class="fa-solid fa-plus"></i></li>
+                </ul>
+                <div class="btn-pay">
+                    <a href="#!"><div class="btn-left btn-buy"><i class="fa-solid fa-cart-shopping"></i> Thêm Vào Giỏ </div></a>
+                    <a href="#!"><div class="btn-right btn-buy"><i class="fa-solid fa-wheelchair-move"></i> Mua Ngay</div></a>
+                </div>
+            </div>
+            <p class="desc-info">Hoặc đặt mua: <a href="#!" style="color: red ; font-size:30px">0909.XXX.XXX</a> (Tư vấn Miễn phí)</p>
         </div>
     </div>
 </div>

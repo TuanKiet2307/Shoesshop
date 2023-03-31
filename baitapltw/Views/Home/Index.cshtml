@@ -6,118 +6,195 @@
 @using System.Globalization;
 
 
-<table class="table">
-    <div class="design_section layout_padding">
-        <div id="my_slider" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="container">
-                        <h1 class="design_taital">Our Work Furniture</h1>
-                        <p class="design_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteratio</p>
-                        <div class="design_section_2">
-                            <div class="row">
-                                @foreach (var item in Model)
-                                {
-                                    <div class="col-md-4">
-                                        <div class="box_main">
-                                            <p class="chair_text">@item.Title</p>
-                                            <div class="image_3" href="#">
-                                                <a href="/Product/Details/@item.Id">
-                                                    <img src="@item.FeatureImage">
-                                                </a>
-                                            </div>
-                                            <p class="chair_text">Price: @string.Format(new CultureInfo("vi-VN", false), "{0:c0}", item.Price)</p>
-                                            <p class="chair_text">Price: @baitapltw.Ultils.Ultils.NumberToText((double)item.Price)</p>
-                                            <div class="buy_bt"><a href="#">Mua Ngay</a></div>
-                                            <div class="buy_bt"><a href="/Product/AddCart/@item.Id">Gio Hang</a></div>
-                                        </div>
-                                    </div>
-                                }
+<!-- Carousel  -->
+<div class="carousel">
+    <div class="carousel__content">
+        <img id="imgcarousel" src="/Content/SanPham/assets/img/hinh1.jpg" alt="" />
+    </div>
+</div>
+<!-- Booking -->
+<div class="book">
+    <div class="body">
+        <!-- content 1 -->
+        <div class="content">
+            <i class="fa-brands fa-angrycreative logo-book"></i>
+            <h3 class="title">CAM KẾT CHÍNH HÃNG</h3>
+            <span class="heading">100 % Authentic </span>
+            <p class="desc">
+                Cam kết sản phẩm chính hãng từ Châu Âu, Châu Mỹ...
+            </p>
+        </div>
+
+        <!-- content 2 -->
+        <div class="content">
+            <i class="fa-solid fa-truck-fast logo-book"></i>
+            <h3 class="title">GIAO HÀNG HỎA TỐC</h3>
+            <span class="heading">Express delivery</span>
+            <p class="desc">SHIP hỏa tốc 1h nhận hàng trong nội thành HCM</p>
+        </div>
+
+        <!-- content 3 -->
+        <div class="content">
+            <i class="fa-solid fa-headphones-simple logo-book"></i>
+            <h3 class="title">HỖ TRỢ 24/24</h3>
+            <span class="heading">Supporting 24/24</span>
+            <p class="desc">Gọi ngay</p>
+        </div>
+    </div>
+</div>
+<!-- Product new -->
+<div id="NIKE" class="product">
+    <a href="#!" class="heading">NIKE</a>
+    <div class="container">
+        <div class="body">
+            <!-- item 1 -->
+            @foreach (var item in Model)
+            {
+                if (item.ProductCateId == 1)
+                {
+                    <div class="course-item">
+                        <a href="/Product/Details/@item.Id">
+                            <img src="@item.FeatureImage" class="thumb" />
+                        </a>                      
+                        <div class="info">
+                            <div class="head">@item.Title</div>
+                            <div class="rating">
+                                <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                                <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                                <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                                <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                                <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
                             </div>
+                            <div class="price">@string.Format(new CultureInfo("vi-VN", false), "{0:c0}", item.Price)</div>
+                            <div class="btn btn-buy"><a href="/Product/AddCart/@item.Id">Buy</a></div><a></a>
                         </div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="container">
-                        <h1 class="design_taital">Our Work Furniture</h1>
-                        <p class="design_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteratio</p>
-                        <div class="design_section_2">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="box_main">
-                                        <p class="chair_text">Chair 01</p>
-                                        <div class="image_3" href="#">
-                                            <img src="Content/NoiThat/images/img-3.png">
-                                        </div>
-                                        <p class="chair_text">Price $100</p>
-                                        <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="box_main">
-                                        <p class="chair_text">Chair 02</p>
-                                        <div class="image_4" href="#"><img src="Content/NoiThat/images/img-4.png"></div>
-                                        <p class="chair_text">Price $100</p>
-                                        <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="box_main">
-                                        <p class="chair_text">Table</p>
-                                        <div class="image_4" href="#"><img src="Content/NoiThat/images/img-5.png"></div>
-                                        <p class="chair_text">Price $100</p>
-                                        <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    </div>
-                                </div>
+                }
+
+            }
+        </div>
+    </div>
+</div>
+
+<!-- sw-page -->
+
+<!-- Product hot -->
+<div id="ADIDAS" class="product product-2">
+    <a href="#!" class="heading">ADIDAS</a>
+    <div class="container">
+        <div class="body">
+            <!-- item 1 -->
+            @foreach (var item in Model)
+            {
+                if (item.ProductCateId == 2)
+                {
+                    <div class="course-item">
+                        <a href="/Product/Details/@item.Id">
+                            <img src="@item.FeatureImage" class="thumb" />
+                        </a>
+                        <div class="info">
+                            <div class="head">@item.Title</div>
+                            <div class="rating">
+                                <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                                <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                                <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                                <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                                <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
                             </div>
+                            <div class="price">@string.Format(new CultureInfo("vi-VN", false), "{0:c0}", item.Price)</div>
+                            <a href="/Product/AddCart/@item.Id"><div class="btn btn-buy">Buy</div><a></a>
                         </div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="container">
-                        <h1 class="design_taital">Our Work Furniture</h1>
-                        <p class="design_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteratio</p>
-                        <div class="design_section_2">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="box_main">
-                                        <p class="chair_text">Chair 01</p>
-                                        <div class="image_3" href="#"><img src="Content/NoiThat/images/img-3.png"></div>
-                                        <p class="chair_text">Price $100</p>
-                                        <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+    <!-- Product Sale -->
+    <div id="YEEZY" class="product product-2 product-3">
+        <a href="#!" class="heading">YEEZY</a>
+        <div class="container">
+            <div class="body">
+                <!-- item 1 -->
+                @foreach (var item in Model)
+                {
+                    if (item.ProductCateId == 3)
+                    {
+                        <div class="course-item">
+                            <a href="/Product/Details/@item.Id">
+                                <img src="@item.FeatureImage" class="thumb" />
+                            </a>
+                            <div class="info">
+                                <div class="head">@item.Title</div>
+                                <div class="rating">
+                                    <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                                    <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                                    <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                                    <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                                    <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="box_main">
-                                        <p class="chair_text">Chair 02</p>
-                                        <div class="image_4" href="#"><img src="Content/NoiThat/images/img-4.png"></div>
-                                        <p class="chair_text">Price $100</p>
-                                        <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="box_main">
-                                        <p class="chair_text">Table</p>
-                                        <div class="image_4" href="#"><img src="Content/NoiThat/images/img-5.png"></div>
-                                        <p class="chair_text">Price $100</p>
-                                        <div class="buy_bt"><a href="#">Buy Now</a></div>
-                                    </div>
-                                </div>
+                                <div class="price">@string.Format(new CultureInfo("vi-VN", false), "{0:c0}", item.Price)</div>
+                                <a href="/Product/AddCart/@item.Id"><div class="btn btn-buy">Buy</div><a></a>
                             </div>
                         </div>
+                    }
+                }
+            </div>
+        </div>
+
+        <!-- Product accessory -->
+        <div id="ACCESSORY" class="product product-2 product-3 product-acces">
+            <a href="#!" class="heading">ACCESSORY</a>
+            <div class="container">
+                <div class="body">
+                    <!-- item 1 -->
+                    <div class="course-item">
+                        @foreach (var item in Model)
+                        {
+                            if (item.ProductCateId == 4)
+                            {
+                                <div class="course-item">
+                                    <a href="/Product/Details/@item.Id">
+                                        <img src="@item.FeatureImage" class="thumb" />
+                                    </a>
+                                    <div class="info">
+                                        <div class="head">@item.Title</div>
+                                        <div class="rating">
+                                            <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                                            <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                                            <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                                            <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                                            <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+                                        </div>
+                                        <div class="price">@string.Format(new CultureInfo("vi-VN", false), "{0:c0}", item.Price)</div>
+                                        <a href="/Product/AddCart/@item.Id"><div class="btn btn-buy">Buy</div><a></a>
+                                    </div>
+                                </div>
+                            }
+                        }
                     </div>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
-                <i class="fa fa-long-arrow-left" style="font-size:24px"></i>
-            </a>
-            <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
-                <i class="fa fa-long-arrow-right" style="font-size:24px"></i>
-            </a>
         </div>
-        <div class="container">
-            <div class="read_bt"><a href="#">Read More</a></div>
-        </div>
-    </div>
+            <!-- voucher -->
+            <div class="voucher">
+                <div class="voucher-content container">
+                    <div class="content-title">
+                        <i class="fa-solid fa-envelope"></i>
+                        <h3 class="voucher-title">ĐĂNG KÝ NHẬN CODE</h3>
+                    </div>
+                    <div class="content-infor">
+                        <input type="text" placeholder="Địa chỉ mail của bạn">
+                        <button>Đăng Ký</button>
+                    </div>
+                    <div class="content-desc">
+                        <p class="desc">...Nhận Ngay <strong>VOUCHER 100k</strong> từ chúng tôi.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer -->
+            <div class="gg-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.4205948966037!2d106.7829140153344!3d10.85558006069482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175276e7ea103df%3A0xb6cf10bb7d719327!2zSHV0ZWNoIEtodSBFIC0gVHJ1bmcgVMOibSDEkMOgbyBU4bqhbyBOaMOibiBM4buxYyBDaOG6pXQgTMaw4bujbmcgQ2Fv!5e0!3m2!1svi!2s!4v1678894849585!5m2!1svi!2s" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
 
-</table>
+
+

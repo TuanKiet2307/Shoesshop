@@ -15,7 +15,7 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand ps-3" href="#">Dash Board</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -24,15 +24,14 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    @using (Html.BeginForm("LogOff", "Account", new {area =""}, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                    @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                     {
                         @Html.AntiForgeryToken()
-
-
-                        <li>
-                            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { @class = "text-white dropdown-item", title = "Manage" })
-                        </li>
-                        <li><a class="btn btn-danger dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                    <li>                 
+                        <a class="text-black dropdown-item" href="#">Hello @User.Identity.GetUserName()</a>
+                    </li>
+                        <li><a class="text-black dropdown-item" href="~/Home">Home</a></li>
+                        <li><a class="btn btn-danger dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log out</a></li>
 
                     }
                 </ul>
@@ -55,16 +54,11 @@
                         </a>
                     </div>
                 </div>
-                <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
-                    Start Bootstrap
-                </div>
             </nav>
         </div>
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Dashboard</h1>
                     @RenderBody()
                 </div>
             </main>

@@ -9,7 +9,7 @@ namespace baitapltw.Areas.Admin.Controllers
     public class DashboardController : Controller
     {
         // GET: Admin/Dashboard
-        [Authorize(Roles ="admin")]
+        [Authorize(Roles = "admin")]
         public ActionResult Index()
         {
             return View();
