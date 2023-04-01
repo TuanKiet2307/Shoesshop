@@ -66,9 +66,29 @@ namespace baitapltw.Controllers
             }
             return RedirectToAction("ViewCart");
         }
+        public RedirectToRouteResult RemoveItem(int ProductId)
+        {
+            List<CartItem> cart = (List<CartItem>)Session["cart"];
+            CartItem DelItem = cart.FirstOrDefault(x => x.Product.Id == ProductId);
+            if (DelItem != null)
+            {
+                cart.Remove(DelItem);
+            }
+            return RedirectToAction("ViewCart");
+        }
         public ActionResult ViewCart()
         {
             return View();
         }
+        public ActionResult Search(string strSearch)
+        {
+            List<Product> product = dbContext.Products.OrderBy(x => x.Title).ToList();
+            if(!string.IsNullOrEmpty(strSearch))
+            {
+                product = product.Where(x => x.Title.Contains(strSearch)).ToList();
+            }
+            return View(product);
+        }
+
     }
 }

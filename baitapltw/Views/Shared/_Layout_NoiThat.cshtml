@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/Content/SanPham/assets/css/reset.css" />
     <link rel="stylesheet" href="/Content/SanPham/assets/css/style.css" />
     <link rel="stylesheet" href="/Content/SanPham/assets/css/product.css" />
+    @*<link rel="stylesheet" href="/Content/SanPham/assets/css/cart.css">*@
     <!-- embed font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,28 +38,40 @@
                             </li>
                             <li>
                                 <a href="#NIKE">NIKE</a>
+                                <ul class="sub-menu">
+                                    <li><a href="#!">NAM</a></li>
+                                    <li><a href="#!">NỮ</a></li>
+                                </ul>
                             </li>
                             <li>
                                 <a href="#ADIDAS">ADIDAS</a>
+                                <ul class="sub-menu">
+                                    <li><a href="#!">NAM</a></li>
+                                    <li><a href="#!">NỮ</a></li>
+                                </ul>
                             </li>
                             <li>
                                 <a href="#YEEZY">YEEZY</a>
+                                <ul class="sub-menu">
+                                    <li><a href="#!">YEEZY BOOST 350</a></li>
+                                    <li><a href="#!">YEEZY BOOST 700</a></li>
+                                </ul>
                             </li>
                             <li>
                                 <a href="#ACCESSORY">ACCESSORY</a>
                             </li>
 
                         </ul>
-                        <form action="" id="search-box">
-                            <input style="color:rgb(255, 195, 0)" type="text" id="search-text" placeholder="Bạn Muốn Mua Gì?">
-                            <button id="search-btn"><i class="fa-solid fa-magnifying-glass btn-header"></i></button>
+                        <form action="~/Product/Search" method="get" id="search-box">
+                            <input style="color:rgb(255, 195, 0)" type="text" id="search-text" name="strSearch" placeholder="Tìm Kiếm Giày" />
+                            <button id="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass btn-header"></i></button>
                         </form>
-                        <div class="login">
+                            <div class="login">
 
-                            @Html.Partial("_LoginPartial")
+                                @Html.Partial("_LoginPartial")
 
-                        </div>
-                        <a href="/Product/ViewCart"><i class="fa-solid fa-cart-shopping btn-header"></i></a>
+                            </div>
+                            <a href="/Product/ViewCart"><i class="fa-solid fa-cart-shopping btn-header"></i></a>
                     </nav>
                 </div>
             </div>

@@ -21,7 +21,6 @@ namespace baitapltw.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-
             var listCate = dbContext.Categories.ToList();
             ViewBag.Loai = listCate;
             return View();
@@ -31,15 +30,50 @@ namespace baitapltw.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
-
                 var listCate = dbContext.Categories.ToList();
                 ViewBag.Loai = listCate;
                 return View("Create", product);
             }
-            string path = Path.Combine(Server.MapPath("~/Content/NoiThat/images"), Path.GetFileName(FeatureImage.FileName));
+            string path = Path.Combine(Server.MapPath("~/Content/SanPham/assets/img/"), Path.GetFileName(FeatureImage.FileName));
             FeatureImage.SaveAs(path);
-            product.FeatureImage = "/Content/NoiThat/images/" + Path.GetFileName(FeatureImage.FileName);
+            product.FeatureImage = "/Content/SanPham/assets/img/" + Path.GetFileName(FeatureImage.FileName);
             dbContext.Products.Add(product);
+            dbContext.SaveChanges();
+            return RedirectToAction("Index", "Product");
+        }
+        public ActionResult Update(int id)
+        {
+            var listCate = dbContext.Categories.ToList();
+            ViewBag.Loai = listCate;
+            var findProduct = dbContext.Products.Find(id);
+            return View(findProduct);
+        }
+        [HttpPost]
+        public ActionResult Update(Product product, HttpPostedFileBase FeatureImage)
+        {
+            if (!ModelState.IsValid)
+            {
+                var listCate = dbContext.Categories.ToList();
+                ViewBag.Loai = listCate;
+                return View("Create", product);
+            }
+            var updateProduct = dbContext.Products.Find(product.Id);
+            string path = Path.Combine(Server.MapPath("~/Content/SanPham/assets/img/"), Path.GetFileName(FeatureImage.FileName));
+            FeatureImage.SaveAs(path);
+            updateProduct.Title = product.Title;
+            updateProduct.Price = product.Price;
+            updateProduct.ProductCateId = product.ProductCateId;
+            updateProduct.Des = product.Des;
+            updateProduct.FeatureImage = product.FeatureImage;
+            updateProduct.FeatureImage = "/Content/SanPham/assets/img/" + Path.GetFileName(FeatureImage.FileName);
+            dbContext.SaveChanges();
+            return RedirectToAction("Index", "Product");
+        }
+
+        public ActionResult Delete(int id) 
+        {
+            var findProduct = dbContext.Products.Find(id);
+            dbContext.Products.Remove(findProduct);
             dbContext.SaveChanges();
             return RedirectToAction("Index", "Product");
         }
