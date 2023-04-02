@@ -72,7 +72,6 @@
 
     <div class="list-cart">
         <div class="body body-header">
-            <input class="w3-check" type="checkbox">
             <label>Sản Phẩm</label>
             <div class="price">Đơn Giá</div>
             <div class="quantity">Số Lượng</div>
@@ -81,33 +80,34 @@
         <!-- list 1 -->
         @if (Session["cart"] == null)
         {
-            <tr>
-                Empty product in cart
-            </tr>
+            <div class="title-name">              
+                <p class="word">Empty product in cart</p>
+            </div>           
         }
         else
         {
             foreach (CartItem item in (List<CartItem>)Session["cart"])
             {
-    <div class="list body ">
-        <input class="w3-check" type="checkbox">
-        <div class="product-2"><img src="@item.Product.FeatureImage" alt="ảnh giày"><p class="desc-product">@item.Product.Title<p></div>
-        <div class="price">@string.Format(new CultureInfo("vi-VN", false), "{0:c0}", item.Product.Price)</div>
-        <div class="quantity">
-            <div class="addToCart">
-                <ul class="quantum">
-                    <li>
-                        <form action="/Product/UpdateCart" method="post">
-                            <input type="number" min="1" name="quantity" value="@item.Quantity" />
-                            <input type="hidden" value="@item.Product.Id" name="productId">
-                            <input type="submit" value="Update" />
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <a href="@Url.Action("RemoveItem",new { ProductId = item.Product.Id})" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');" class="btn btn-danger btn-sm">Xóa</a>
-    </div>
+                <div class="list body ">
+                    <div class="product-2"><img src="@item.Product.FeatureImage" alt="ảnh giày"><p class="desc-product">@item.Product.Title<p></div>
+                    <div class="price">@string.Format(new CultureInfo("vi-VN", false), "{0:c0}", item.Product.Price)</div>
+                    <div class="quantity">
+                        <div class="addToCart">
+                            <ul class="quantum">
+                                <li>
+                                    <form action="/Product/UpdateCart" method="post">
+                                        <input type="number" min="1" name="quantity" value="@item.Quantity" />
+                                        <input type="hidden" value="@item.Product.Id" name="productId">
+                                        <input type="submit" value="Update" />
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="option-id-2">
+                        <a href="@Url.Action("RemoveItem",new { ProductId = item.Product.Id})" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');" class="btn btn-danger btn-sm">Xóa</a>
+                    </div>
+                </div>
             }
             <!-- Sum-price -->
             <div class="sum-price">
@@ -122,8 +122,8 @@
                         </strong>
                     </p>
                     <div class="body-sum">
-                        <div class="btn btn-add"><a class="text-black" href="~/Home">MUA TIẾP</a> <i class="fa-solid fa-greater-than"></i></div>
-                        <div class="btn btn-book">ĐẶT HÀNG <i class="fa-solid fa-greater-than"></i></div>
+                        <a class="btn btn-add" href="~/Home">MUA TIẾP</a>
+                        <a onclick="return confirm('Đơn hàng đang được giao đến bạn');" class="btn btn-book" href="#" >MUA HÀNG</a>
                     </div>
                 </div>
             </div>

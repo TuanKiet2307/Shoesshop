@@ -60,18 +60,15 @@
                             <li>
                                 <a href="#ACCESSORY">ACCESSORY</a>
                             </li>
-
+                            <li>
+                                @Html.Partial("_LoginPartial")
+                            </li>
                         </ul>
                         <form action="~/Product/Search" method="get" id="search-box">
                             <input style="color:rgb(255, 195, 0)" type="text" id="search-text" name="strSearch" placeholder="Tìm Kiếm Giày" />
                             <button id="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass btn-header"></i></button>
                         </form>
-                            <div class="login">
-
-                                @Html.Partial("_LoginPartial")
-
-                            </div>
-                            <a href="/Product/ViewCart"><i class="fa-solid fa-cart-shopping btn-header"></i></a>
+                        <a href="/Product/ViewCart"><i class="fa-solid fa-cart-shopping btn-header"></i></a>
                     </nav>
                 </div>
             </div>
