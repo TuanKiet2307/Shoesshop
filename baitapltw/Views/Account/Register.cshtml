@@ -11,19 +11,19 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="input-form">
-        <span>Email-Của Bạn</span>
+        <span>Email</span>
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
         </div>
     </div>
     <div class="input-form">
-        <span>Mật Khẩu</span>
+        <span>Password</span>
         <div class="col-md-10">
             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
         </div>
     </div>
     <div class="input-form">
-        <span>Nhập Lại Mật Khẩu</span>
+        <span>Confirm Password</span>
         <div class="col-md-10">
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
         </div>
@@ -32,7 +32,7 @@
         <input type="submit" class="btn btn-default" value="Register" />
     </div>
     <div class="input-form" style="text-align: center">
-        <p>Bạn Đã Có Tài Khoản? <a href="/Account/Login">Đăng Nhập</a></p>
+        <p>Do you have an account? <a href="/Account/Login">Login</a></p>
     </div>
 }
 

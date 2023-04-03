@@ -56,18 +56,13 @@
                 </div>
             </div>
             <h1 class="shoes-title">@Model.Title</h1>
-            <p class="product-category">Mã SP: <strong>@Model.Id</strong></p>
-            <p class="product-category">Loại SP: <strong>@Model.Category.Title</strong></p>
+            <p class="product-category">Mã sản phẩm: <strong>@Model.Id</strong></p>
+            <p class="product-category">Loại sản phẩm: <strong>@Model.Category.Title</strong></p>
+            <p class="product-category">Mô tả sản phẩm: <strong>@Model.Des</strong></p>
             <h3 class="product-price">@string.Format(new CultureInfo("vi-VN", false), "{0:c0}", @Model.Price)</h3>
             <div class="addToCart">
-                <ul class="quantum">
-                    <li><i class="fa-solid fa-minus"></i></li>
-                    <li>1</li>
-                    <li><i class="fa-solid fa-plus"></i></li>
-                </ul>
                 <div class="btn-pay">
-                    <a href="#!"><div class="btn-left btn-buy"><i class="fa-solid fa-cart-shopping"></i> Thêm Vào Giỏ </div></a>
-                    <a href="#!"><div class="btn-right btn-buy"><i class="fa-solid fa-wheelchair-move"></i> Mua Ngay</div></a>
+                    <a href="/Product/AddCart/@Model.Id"><div class="btn-left btn-buy"><i class="fa-solid fa-cart-shopping"></i> Thêm Vào Giỏ </div></a>
                 </div>
             </div>
             <p class="desc-info">Hoặc đặt mua: <a href="#!" style="color: red ; font-size:30px">0909.XXX.XXX</a> (Tư vấn Miễn phí)</p>

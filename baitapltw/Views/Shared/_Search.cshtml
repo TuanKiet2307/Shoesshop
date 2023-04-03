@@ -1,0 +1,192 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- link css -->
+    <link rel="stylesheet" href="/Content/SanPham/assets/css/reset.css" />
+    <link rel="stylesheet" href="/Content/SanPham/assets/css/style.css" />
+    <link rel="stylesheet" href="/Content/SanPham/assets/css/search.css">
+    <!-- embed font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- link icon -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+    <!-- link bootstrap -->
+</head>
+<body>
+    <!-- NAV -->
+    <header>
+        <div class="header fixed">
+            <div class="main-content">
+                <div class="body">
+                    <nav class="nav">
+                        <a href="/">
+                            <img src="/Content/SanPham/assets/img/logo.png"
+                                 alt="logo shoes"
+                                 class="logo" />
+                        </a>
+                        </a>
+                        <ul class="list">
+                            <li>
+                                <a href="#!">ABOUT US</a>
+                            </li>
+                            <li>
+                                <a href="#NIKE">NIKE</a>
+                                <ul class="sub-menu">
+                                    <li><a href="#!">NAM</a></li>
+                                    <li><a href="#!">NỮ</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#ADIDAS">ADIDAS</a>
+                                <ul class="sub-menu">
+                                    <li><a href="#!">NAM</a></li>
+                                    <li><a href="#!">NỮ</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#YEEZY">YEEZY</a>
+                                <ul class="sub-menu">
+                                    <li><a href="#!">YEEZY BOOST 350</a></li>
+                                    <li><a href="#!">YEEZY BOOST 700</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#ACCESSORY">ACCESSORY</a>
+                            </li>
+                            <li>
+                                <a href="#!">OTHER BRAND</a>
+                                <ul class="sub-menu">
+                                    <li><a href="#!">SNEAKER AUTHENTIC</a></li>
+                                    <li><a href="#!">GIÀY THỂ THAO CHẠY BỘ - TẬP GYM</a></li>
+                                    <li><a href="#!">GIÀY TENIS</a></li>
+                                    <li><a href="#!">BOX HỢP ĐỰNG GIÀY SNEAKER</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#loca-sale">SALE</a>
+                            </li>
+                            <li>
+                                <a href="#spa-shoes">SPA SHOES</a>
+                            </li>
+                            <li>
+                                @Html.Partial("_LoginPartial")
+                            </li>
+                        </ul>
+                        <form action="~/Product/Search" method="get" id="search-box">
+                            <input style="color:rgb(255, 195, 0)" type="text" id="search-text" name="strSearch" placeholder="Tìm Kiếm Giày" />
+                            <button id="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass btn-header"></i></button>
+                        </form>
+                        <a href="/Product/ViewCart"><i class="fa-solid fa-cart-shopping btn-header"></i></a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- Carousel  -->
+        <div class="carousel">
+            <div class="carousel__content">
+                <button class="btn btn-prev" onclick="prevIMG()"><i class="fa-solid fa-chevron-left"></i></button>
+                <img id="imgcarousel" src="/Content/SanPham/assets/img/hinh1.jpg" alt="" />
+                <button class="btn btn-next" onclick="nextIMG()"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+        <!-- Booking -->
+        <div class="book">
+            <div class="body">
+                <!-- content 1 -->
+                <div class="content">
+                    <i class="fa-brands fa-angrycreative logo-book"></i>
+                    <h3 class="title">CAM KẾT CHÍNH HÃNG</h3>
+                    <span class="heading">100 % Authentic </span>
+                    <p class="desc">
+                        Cam kết sản phẩm chính hãng từ Châu Âu, Châu Mỹ...
+                    </p>
+                </div>
+
+                <!-- content 2 -->
+                <div class="content">
+                    <i class="fa-solid fa-truck-fast logo-book"></i>
+                    <h3 class="title">GIAO HÀNG HỎA TỐC</h3>
+                    <span class="heading">Express delivery</span>
+                    <p class="desc">SHIP hỏa tốc 1h nhận hàng trong nội thành HCM</p>
+                </div>
+
+                <!-- content 3 -->
+                <div class="content">
+                    <i class="fa-solid fa-headphones-simple logo-book"></i>
+                    <h3 class="title">HỖ TRỢ 24/24</h3>
+                    <span class="heading">Supporting 24/24</span>
+                    <p class="desc">Gọi ngay</p>
+                </div>
+            </div>
+        </div>
+        <!-- Product new -->
+        <div class="product">
+            <a href="#!" class="heading">- SẢN PHẨM TÌM KIẾM</a>
+            <div class="container">
+                <div class="body">
+                    @RenderBody()
+                </div>
+            </div>
+            <!-- product Hot -->
+        </div>
+        <!-- Footer -->
+        <div class="gg-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.4205948966037!2d106.7829140153344!3d10.85558006069482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175276e7ea103df%3A0xb6cf10bb7d719327!2zSHV0ZWNoIEtodSBFIC0gVHJ1bmcgVMOibSDEkMOgbyBU4bqhbyBOaMOibiBM4buxYyBDaOG6pXQgTMaw4bujbmcgQ2Fv!5e0!3m2!1svi!2s!4v1678894849585!5m2!1svi!2s" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+        <div class="footer">
+            <div class="footer-content">
+                <div class="infor-shop">
+                    <img src="/Content/SanPham/assets/img/logo.png" alt="logo store" class="logo-primary">
+                    <h2 class="footer-title">THÔNG TIN LIÊN HỆ</h2>
+                    <p class="footer-desc">MeTalShoes.VN Trang Thông Tin Chính Thức.</p>
+                    <p class="footer-desc"> ⛪ Địa chỉ: 10/80C XL Hà Nội, Phường Tân Phú, Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam</p>
+                    <p class="footer-desc">Email : cskh.kingshoes.vn@gmail.com</p>
+                    <a class="footer-social-contact" href="#!">https://MeTalShoes.vn</a>
+                    </br>
+                    <a class="footer-social-contact" href="#!">https://twitter.com/MetaShoes</a>
+                    </br>
+                    <a class="footer-social-contact" href="#!">https://facebook.com/pg/www.MeTalShoes.vn</a>
+                </div>
+
+                <div class="support-customer">
+                    <div class="row">
+                        <div class="colum-1">
+                            <h2 class="footer-title">HỖ TRỢ KHÁCH HÀNG</h2>
+                            <ul">
+                                <li><a class="footer-social-contact" href="#!">Chăm sóc khách hàng</a></li>
+                                <li><a class="footer-social-contact" href="#!">Thanh toán</a></li>
+                                <li><a class="footer-social-contact" href="#!">Hướng dẫn mua hàng</a></li>
+                                </ul>
+                        </div>
+                        <div class="column-2">
+                            <h2 class="footer-title">CHÍNH SÁCH</h2>
+                            <ul>
+                                <li><a class="footer-social-contact" href="">Chế độ bảo hành</a></li>
+                                <li><a class="footer-social-contact" href="">Chính sách đổi hàng</a></li>
+                                <li><a class="footer-social-contact" href="">Bảo mật thông tin</a></li>
+                                <li><a class="footer-social-contact" href="">Chính sách giao nhận</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <p class="footer-desc">Số ĐKKD: 41N8041309 cấp ngày 17/8/2018. Nơi cấp Ủy Ban Nhân Dân Quận 9. Hộ Kinh Doanh: MeTalShoes. Hotline: 0937.051.131</p>
+                    <h1 class="Active">CHỨNG NHẬN</h1>
+                    <img src="/Content/SanPham/assets/img/logoSaleNoti.png" alt="Thông Báo Chấn Nhận" class="Active-social">
+                </div>
+
+                <div class="footer-social">
+                    <h2 class="footer-title">FANPAGE</h2>
+                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhutechuniversity&tabs=timeline&width=600&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=2382458428564475" width="600" height="300" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <script src="/Content/SanPham/index.js"></script>
+</body>
+</html>

@@ -230,6 +230,7 @@
     <Content Include="Content\SanPham\assets\css\cart.css" />
     <Content Include="Content\SanPham\assets\css\product.css" />
     <Content Include="Content\SanPham\assets\css\reset.css" />
+    <Content Include="Content\SanPham\assets\css\search.css" />
     <Content Include="Content\SanPham\assets\css\sigh-in.css" />
     <Content Include="Content\SanPham\assets\css\sigh-in1.css" />
     <Content Include="Content\SanPham\assets\css\sign-up.css" />
@@ -346,6 +347,7 @@
     <Content Include="Views\Product\Search.cshtml" />
     <None Include="Views\Shared\Signin.cshtml" />
     <None Include="Views\Shared\Signup.cshtml" />
+    <None Include="Views\Shared\_Search.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -379,10 +381,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\_Layout_NoiThat.cshtml" />
-    <Content Include="Views\SanPham\__ChiTiet.cshtml" />
-    <Content Include="Views\SanPham\__DanhSach.cshtml" />
-    <Content Include="Views\SanPham\__ThemSanPham.cshtml" />
+    <Content Include="Views\Shared\_Layout_ShopGiay.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />

@@ -1,63 +1,11 @@
 ﻿@using System.Globalization;
 @{
     ViewBag.Title = "ViewCart";
-    Layout = "~/Views/Shared/_Layout_NoiThat.cshtml";
+    Layout = "~/Views/Shared/_Layout_ShopGiay.cshtml";
 }
 @using baitapltw.Models
 
 <link rel="stylesheet" href="/Content/SanPham/assets/css/cart.css">
-@*<div class="product">
-        <table cellpadding="2" cellspacing="2" border="1">
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Photo</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Sub Total</th>
-            </tr>
-
-            @if (Session["cart"] == null)
-            {
-                <tr>
-                    Empty product in cart
-                </tr>
-            }
-            else
-            {
-                foreach (CartItem item in (List<CartItem>)Session["cart"])
-                {
-                    <tr>
-                        <td>@item.Product.Id</td>
-                        <td>@item.Product.Title</td>
-                        <td><img src="@item.Product.FeatureImage" width="60" /> </td>
-                        <td>@item.Product.Price</td>
-                        <td>
-                            <form action="/Product/UpdateCart" method="post">
-                                <input type="number" min="1" name="quantity" value="@item.Quantity" />
-                                <input type="hidden" value="@item.Product.Id" name="productId">
-                                <input type="submit" value="Update" />
-                            </form>
-                        </td>
-                        <td>@(item.Product.Price * item.Quantity)</td>
-                    </tr>
-                }
-                <tr>
-                    <td align="right" colspan="6">Sum</td>
-                    <td>
-                        @{
-                            List<CartItem> cart = (List<CartItem>)Session["cart"];
-                            var total = cart.Sum(item => item.Product.Price * item.Quantity);
-                        }
-                        @total
-                    </td>
-                </tr>
-            }
-        </table>
-        <br>
-        <a href="@Url.Action("Index", "Home")">Continue Shopping</a>
-
-    </div>*@
 <!-- title-cart -->
 <main>
     <div class="title">
@@ -95,7 +43,7 @@
                         <div class="addToCart">
                             <ul class="quantum">
                                 <li>
-                                    <form action="/Product/UpdateCart" method="post">
+                                    <form action="/Product/UpdateCart" method="post" style="font-size:30px">
                                         <input type="number" min="1" name="quantity" value="@item.Quantity" />
                                         <input type="hidden" value="@item.Product.Id" name="productId">
                                         <input type="submit" value="Update" />
@@ -105,7 +53,7 @@
                         </div>
                     </div>
                     <div class="option-id-2">
-                        <a href="@Url.Action("RemoveItem",new { ProductId = item.Product.Id})" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');" class="btn btn-danger btn-sm">Xóa</a>
+                        <a  href="@Url.Action("RemoveItem",new { ProductId = item.Product.Id})" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');" class="btn btn-danger btn-sm">Xóa</a>
                     </div>
                 </div>
             }
