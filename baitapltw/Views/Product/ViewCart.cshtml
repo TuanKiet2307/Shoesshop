@@ -66,7 +66,7 @@
                                 List<CartItem> cart = (List<CartItem>)Session["cart"];
                                 var total = cart.Sum(item => item.Product.Price * item.Quantity);
                             }
-                            @total
+                            @string.Format(new CultureInfo("vi-VN", false), "{0:c0}", @total)
                         </strong>
                     </p>
                     <div class="body-sum">
