@@ -11,12 +11,12 @@ namespace baitapltw.Models
     {
         public int Id { get; set; }
 
-        [StringLength(50)]
+        [StringLength(500)]
         //Model DataAnnotations
         [Required(ErrorMessage = "Vui long nhap tieu de")]
         public string Title { get; set; }
-
-        public decimal? Price { get; set; }
+        [StringLength(4000)]
+        public string Detail { get; set; }
 
         [StringLength(200)]
         public string FeatureImage { get; set; }

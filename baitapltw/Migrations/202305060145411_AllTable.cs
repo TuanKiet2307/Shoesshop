@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Init_ASP_IdentityModel : DbMigration
+    public partial class AllTable : DbMigration
     {
         public override void Up()
         {
@@ -21,39 +21,28 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Title = c.String(nullable: false, maxLength: 50),
-                        Price = c.Decimal(precision: 18, scale: 2),
+                        Title = c.String(nullable: false, maxLength: 500),
+                        Detail = c.String(maxLength: 4000),
                         FeatureImage = c.String(maxLength: 200),
-                        ProductCateId = c.Int(),
+                        ProductCateId = c.Int(nullable: false),
                         Des = c.String(maxLength: 500),
-                        Category_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Category", t => t.Category_Id)
-                .Index(t => t.Category_Id);
+                .ForeignKey("dbo.Category", t => t.ProductCateId, cascadeDelete: true)
+                .Index(t => t.ProductCateId);
             
             CreateTable(
-                "dbo.AspNetRoles",
+                "dbo.Followings",
                 c => new
                     {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Name = c.String(nullable: false, maxLength: 256),
+                        FollowerId = c.String(nullable: false, maxLength: 128),
+                        FolloweeId = c.String(nullable: false, maxLength: 128),
                     })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
-            
-            CreateTable(
-                "dbo.AspNetUserRoles",
-                c => new
-                    {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        RoleId = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId)
-                .Index(t => t.RoleId);
+                .PrimaryKey(t => new { t.FollowerId, t.FolloweeId })
+                .ForeignKey("dbo.AspNetUsers", t => t.FollowerId)
+                .ForeignKey("dbo.AspNetUsers", t => t.FolloweeId)
+                .Index(t => t.FollowerId)
+                .Index(t => t.FolloweeId);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -100,27 +89,55 @@
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
+            CreateTable(
+                "dbo.AspNetUserRoles",
+                c => new
+                    {
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        RoleId = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => new { t.UserId, t.RoleId })
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
+                .Index(t => t.UserId)
+                .Index(t => t.RoleId);
+            
+            CreateTable(
+                "dbo.AspNetRoles",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(nullable: false, maxLength: 256),
+                    })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Followings", "FolloweeId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Followings", "FollowerId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Product", "Category_Id", "dbo.Category");
+            DropForeignKey("dbo.Product", "ProductCateId", "dbo.Category");
+            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
-            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Product", new[] { "Category_Id" });
+            DropIndex("dbo.Followings", new[] { "FolloweeId" });
+            DropIndex("dbo.Followings", new[] { "FollowerId" });
+            DropIndex("dbo.Product", new[] { "ProductCateId" });
+            DropTable("dbo.AspNetRoles");
+            DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.AspNetUserRoles");
-            DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Followings");
             DropTable("dbo.Product");
             DropTable("dbo.Category");
         }

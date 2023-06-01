@@ -1,148 +1,218 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<!--
+    24 News by FreeHTML5.co
+    Twitter: https://twitter.com/fh5co
+    Facebook: https://fb.com/fh5co
+    URL: https://freehtml5.co
+-->
+<html lang="en" >
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- link css -->
-    <link rel="stylesheet" href="/Content/SanPham/assets/css/reset.css" />
-    <link rel="stylesheet" href="/Content/SanPham/assets/css/style.css" />
-    <link rel="stylesheet" href="/Content/SanPham/assets/css/product.css" />
-    @*<link rel="stylesheet" href="/Content/SanPham/assets/css/cart.css">*@
-    <!-- embed font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- link icon -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
-    <!-- link bootstrap -->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>24 News — Free Website Template, Free HTML5 Template by FreeHTML5.co</title>
+    <link href="/Content/Layout/css/media_query.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/Layout/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/Content/Layout/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="/Content/Layout/css/animate.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link href="/Content/Layout/css/owl.carousel.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/Layout/css/owl.theme.default.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap CSS -->
+    <link href="/Content/Layout/css/style_1.css" rel="stylesheet" type="text/css" />
+    <!-- Modernizr JS -->
+    <script src="/Content/Layout/js/modernizr-3.5.0.min.js"></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <!-- NAV -->
-    <header>
-        <div class="header fixed">
-            <div class="main-content">
-                <div class="body">
-                    <nav class="nav">
-                        <a href="/">
-                            <img src="/Content/SanPham/assets/img/logo.png"
-                                 alt="logo shoes"
-                                 class="logo" />
-                        </a>
-                        <ul class="list">
-                            <li>
-                                <a href="#!">ABOUT US</a>
-                            </li>
-                            <li>
-                                <a href="#NIKE">NIKE</a>
-                                <ul class="sub-menu">
-                                    <li><a href="#!">NAM</a></li>
-                                    <li><a href="#!">NỮ</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#ADIDAS">ADIDAS</a>
-                                <ul class="sub-menu">
-                                    <li><a href="#!">NAM</a></li>
-                                    <li><a href="#!">NỮ</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#YEEZY">YEEZY</a>
-                                <ul class="sub-menu">
-                                    <li><a href="#!">YEEZY BOOST 350</a></li>
-                                    <li><a href="#!">YEEZY BOOST 700</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#ACCESSORY">ACCESSORY</a>
-                            </li>
-                            <li>
-                                <a href="#!">OTHER BRAND</a>
-                                <ul class="sub-menu">
-                                    <li><a href="#!">SNEAKER AUTHENTIC</a></li>
-                                    <li><a href="#!">GIÀY THỂ THAO CHẠY BỘ - TẬP GYM</a></li>
-                                    <li><a href="#!">GIÀY TENIS</a></li>
-                                    <li><a href="#!">BOX HỢP ĐỰNG GIÀY SNEAKER</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#loca-sale">SALE</a>
-                            </li>
-                            <li>
-                                <a href="#spa-shoes">SPA SHOES</a>
-                            </li>
-                            <li>
-                                @Html.Partial("_LoginPartial")
-                            </li>
-                        </ul>
-                        <form action="~/Product/Search" method="get" id="search-box">
-                            <input style="color:rgb(255, 195, 0)" type="text" id="search-text" name="strSearch" placeholder="Tìm Kiếm Giày" />
-                            <button id="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass btn-header"></i></button>
-                        </form>
-                        <a href="/Product/ViewCart"><i class="fa-solid fa-cart-shopping btn-header"></i></a>
-                    </nav>
+    <div class="container-fluid fh5co_header_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 fh5co_mediya_center">
+                    <a href="#" class="color_fff fh5co_mediya_setting">
+                        <i class="fa fa-clock-o"></i>&nbsp;&nbsp;&nbsp;Friday, 5 January 2018
+                    </a>
+                    <div class="d-inline-block fh5co_trading_posotion_relative">
+                        <a href="#" class="treding_btn">Trending</a>
+                        <div class="fh5co_treding_position_absolute"></div>
+                    </div>
+                    <a href="#" class="color_fff fh5co_mediya_setting">Instagram’s big redesign goes live with black-and-white app</a>
+                    @Html.Partial("_LoginPartial")
                 </div>
             </div>
-        </div>
-    </header>
-    @RenderBody()
-
-    <div class="footer">
-        <div class="footer-content">
-            <div class="infor-shop">
-                <img src="/Content/SanPham/assets/img/logo.png" alt="logo store" class="logo-primary">
-                <h2 class="footer-title">THÔNG TIN LIÊN HỆ</h2>
-                <p class="footer-desc">MeTalShoes.VN Trang Thông Tin Chính Thức.</p>
-                <p class="footer-desc"> ⛪ Địa chỉ: 10/80C XL Hà Nội, Phường Tân Phú, Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam</p>
-                <p class="footer-desc">Email : cskh.kingshoes.vn@gmail.com</p>
-                <a class="footer-social-contact" href="#!">https://MeTalShoes.vn</a>
-                </br>
-                <a class="footer-social-contact" href="#!">https://twitter.com/MetaShoes</a>
-                </br>
-                <a class="footer-social-contact" href="#!">https://facebook.com/pg/www.MeTalShoes.vn</a>
-            </div>
-
-            <div class="support-customer">
-                <div class="row">
-                    <div class="colum-1">
-                        <h2 class="footer-title">HỖ TRỢ KHÁCH HÀNG</h2>
-                        <ul>
-                            <li><a class="footer-social-contact" href="#!">Chăm sóc khách hàng</a></li>
-                            <li><a class="footer-social-contact" href="#!">Thanh toán</a></li>
-                            <li><a class="footer-social-contact" href="#!">Hướng dẫn mua hàng</a></li>
-                        </ul>
-                    </div>
-                    <div class="column-2">
-                        <h2 class="footer-title">CHÍNH SÁCH</h2>
-                        <ul>
-                            <li><a class="footer-social-contact" href="">Chế độ bảo hành</a></li>
-                            <li><a class="footer-social-contact" href="">Chính sách đổi hàng</a></li>
-                            <li><a class="footer-social-contact" href="">Bảo mật thông tin</a></li>
-                            <li><a class="footer-social-contact" href="">Chính sách giao nhận</a></li>
-                        </ul>
-                    </div>
-
-                </div>
-                <p class="footer-desc">Số ĐKKD: 41N8041309 cấp ngày 17/8/2018. Nơi cấp Ủy Ban Nhân Dân Quận 9. Hộ Kinh Doanh: MeTalShoes. Hotline: 0937.051.131</p>
-                <h1 class="Active">CHỨNG NHẬN</h1>
-                <img src="/Content/SanPham/assets/img/logoSaleNoti.png" alt="Thông Báo Chấn Nhận" class="Active-social">
-            </div>
-
-            <div class="footer-social">
-                <h2 class="footer-title">FANPAGE</h2>
-                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fhutechuniversity&tabs=timeline&width=600&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=2382458428564475" width="600" height="300" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-            </div>
-
         </div>
     </div>
-    <script src="/Content/SanPham/index.js"></script>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-3 fh5co_padding_menu">
+                    <img src="/content/layout/images/logo.png" alt="img" class="fh5co_logo_width" />
+                </div>
+                <div class="col-12 col-md-9 align-self-center fh5co_mediya_right">
+                    <form action="~/Product/Search" method="get" id="search-box">
+                        <input style="color:rgb(255, 195, 0)" type="text" id="search-text" name="strSearch" placeholder="Search" />
+                        <button id="search-btn" type="submit">Search<i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-faded fh5co_padd_mediya padding_786">
+        <div class="container padding_786">
+            <nav class="navbar navbar-toggleable-md navbar-light ">
+                <button class="navbar-toggler navbar-toggler-right mt-3" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/Home">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/Product/Business">Business <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/Product/Technology">Technology <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/Product/World">World <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/Product/Law">Law <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/Product/Sport">Sport <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/Product/Education">Education <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/Product/Social">Social <span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    @RenderBody()
+    <div class="container-fluid fh5co_footer_bg pb-3">
+        <div class="container animate-box">
+            <div class="row">
+                <div class="col-12 spdp_right py-5"><img src="~/Content/Layout/images/white_logo.png" alt="img" class="footer_logo" /></div>
+                <div class="clearfix"></div>
+                <div class="col-12 col-md-4 col-lg-3">
+                    <div class="footer_main_title py-3"> About</div>
+                    <div class="footer_sub_about pb-3">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting
+                        industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                        unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    </div>
+                    <div class="footer_mediya_icon">
+                        <div class="text-center d-inline-block">
+                            <a class="fh5co_display_table_footer">
+                                <div class="fh5co_verticle_middle"><i class="fa fa-linkedin"></i></div>
+                            </a>
+                        </div>
+                        <div class="text-center d-inline-block">
+                            <a class="fh5co_display_table_footer">
+                                <div class="fh5co_verticle_middle"><i class="fa fa-google-plus"></i></div>
+                            </a>
+                        </div>
+                        <div class="text-center d-inline-block">
+                            <a class="fh5co_display_table_footer">
+                                <div class="fh5co_verticle_middle"><i class="fa fa-twitter"></i></div>
+                            </a>
+                        </div>
+                        <div class="text-center d-inline-block">
+                            <a class="fh5co_display_table_footer">
+                                <div class="fh5co_verticle_middle"><i class="fa fa-facebook"></i></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-3 col-lg-2">
+                    <div class="footer_main_title py-3"> Category</div>
+                    <ul class="footer_menu">
+                        <li><a href="/Product/Business" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; Business</a></li>
+                        <li><a href="/Product/Technology" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; Technology</a></li>
+                        <li><a href="/Product/World" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; World</a></li>
+                        <li><a href="/Product/Law" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; Law</a></li>
+                        <li><a href="/Product/Sport" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; Sport</a></li>
+                        <li><a href="/Product/Education" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; Education</a></li>
+                        <li><a href="/Product/Social" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; Social</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-5 col-lg-3 position_footer_relative">
+                    <div class="footer_main_title py-3"> Most Viewed Posts</div>
+                    <div class="footer_makes_sub_font"> Dec 31, 2016</div>
+                    <a href="#" class="footer_post pb-4"> Success is not a good teacher failure makes you humble </a>
+                    <div class="footer_makes_sub_font"> Dec 31, 2016</div>
+                    <a href="#" class="footer_post pb-4"> Success is not a good teacher failure makes you humble </a>
+                    <div class="footer_makes_sub_font"> Dec 31, 2016</div>
+                    <a href="#" class="footer_post pb-4"> Success is not a good teacher failure makes you humble </a>
+                    <div class="footer_position_absolute"><img src="/Content/Layout/images/footer_sub_tipik.png" alt="img" class="width_footer_sub_img" /></div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-4 ">
+                    <div class="footer_main_title py-3"> Last Modified Posts</div>
+                    <a href="#" class="footer_img_post_6"><img src="/Content/Layout/images/allef-vinicius-108153.jpg" alt="img" /></a>
+                    <a href="#" class="footer_img_post_6"><img src="/Content/Layout/images/32-450x260.jpg" alt="img" /></a>
+                    <a href="#" class="footer_img_post_6"><img src="/Content/Layout/images/download (1).jpg" alt="img" /></a>
+                    <a href="#" class="footer_img_post_6"><img src="/Content/Layout/images/science-578x362.jpg" alt="img" /></a>
+                    <a href="#" class="footer_img_post_6"><img src="/Content/Layout/images/vil-son-35490.jpg" alt="img" /></a>
+                    <a href="#" class="footer_img_post_6"><img src="/Content/Layout/images/zack-minor-15104.jpg" alt="img" /></a>
+                    <a href="#" class="footer_img_post_6"><img src="/Content/Layout/images/download.jpg" alt="img" /></a>
+                    <a href="#" class="footer_img_post_6"><img src="/Content/Layout/images/download (2).jpg" alt="img" /></a>
+                    <a href="#" class="footer_img_post_6"><img src="/Content/Layout/images/ryan-moreno-98837.jpg" alt="img" /></a>
+                </div>
+            </div>
+            <div class="row justify-content-center pt-2 pb-4">
+                <div class="col-12 col-md-8 col-lg-7 ">
+                    <div class="input-group">
+                        <span class="input-group-addon fh5co_footer_text_box" id="basic-addon1"><i class="fa fa-envelope"></i></span>
+                        <input type="text" class="form-control fh5co_footer_text_box" placeholder="Enter your email..." aria-describedby="basic-addon1">
+                        <a href="#" class="input-group-addon fh5co_footer_subcribe" id="basic-addon12"> <i class="fa fa-paper-plane-o"></i>&nbsp;&nbsp;Subscribe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid fh5co_footer_right_reserved">
+        <div class="container">
+            <div class="row  ">
+                <div class="col-12 col-md-6 py-4 Reserved"> © Copyright 2018, All rights reserved. Design by <a href="https://freehtml5.co" title="Free HTML5 Bootstrap templates">FreeHTML5.co</a>. </div>
+                <div class="col-12 col-md-6 spdp_right py-4">
+                    <a href="#" class="footer_last_part_menu">Home</a>
+                    <a href="Contact_us.html" class="footer_last_part_menu">About</a>
+                    <a href="Contact_us.html" class="footer_last_part_menu">Contact</a>
+                    <a href="blog.html" class="footer_last_part_menu">Latest News</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    @Scripts.Render("~/bundles/jquery")
+    <div class="gototop js-top">
+        <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/Content/Layout/js/owl.carousel.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0//Content/Layout/js/tether.min.js"
+            integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6//Content/Layout/js/bootstrap.min.js"
+            integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+            crossorigin="anonymous"></script>
+    <!-- Waypoints -->
+    <script src="/Content/Layout/js/jquery.waypoints.min.js"></script>
+    <!-- Main -->
+    <script src="/Content/Layout/js/main.js"></script>
+    @*@Scripts.Render("~/bundles/jquery")*@
     @Scripts.Render("~/bundles/bootstrap")
-    @*@RenderSection("scripts", required: false)*@
+    @RenderSection("scripts", required: false)
 </body>
 </html>

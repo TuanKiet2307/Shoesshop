@@ -4,16 +4,16 @@
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
         @Html.AntiForgeryToken()
-
-<ul class="nav navbar-nav navbar-right ">
-    <li>
-            <a href="#" >@User.Identity.GetUserName()</a>
-            <ul class="sub-menu">
-                <li><a href="~/Admin/Product">Admin</a></li>
-                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log out</a></li>
-            </ul>
-        </li>
-</ul>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="fontc">@User.Identity.GetUserName() <span class="sr-only">(current)</span></a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink_1">
+                    <a class="dropdown-item" href="~/Admin/Product">Admin</a>
+                    <a class="dropdown-item" href="@Url.Action("Attending", "Product")">Course I'm Going</a>
+                    <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log out</a>
+                </div>
+            </li>
+        </ul>
     @*<li>
         @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
     </li>
@@ -21,8 +21,6 @@
     }
 }
 else
-{
-<ul class="aaa">  
-    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-</ul>
+{   
+    @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
 }

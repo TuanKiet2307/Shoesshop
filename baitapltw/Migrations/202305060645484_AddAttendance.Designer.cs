@@ -7,13 +7,13 @@ namespace baitapltw.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AlterProduct_Table : IMigrationMetadata
+    public sealed partial class AddAttendance : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AlterProduct_Table));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddAttendance));
         
         string IMigrationMetadata.Id
         {
-            get { return "202303210049524_AlterProduct_Table"; }
+            get { return "202305060645484_AddAttendance"; }
         }
         
         string IMigrationMetadata.Source

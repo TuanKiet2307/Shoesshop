@@ -7,13 +7,13 @@ namespace baitapltw.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class Init_ASP_IdentityModel : IMigrationMetadata
+    public sealed partial class AllTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Init_ASP_IdentityModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AllTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "202303201202224_Init_ASP_IdentityModel"; }
+            get { return "202305060145411_AllTable"; }
         }
         
         string IMigrationMetadata.Source

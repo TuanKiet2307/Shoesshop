@@ -50,6 +50,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -58,6 +61,12 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.9\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -170,27 +179,34 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AttendancesController.cs" />
+    <Compile Include="Controllers\FollowingsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="DTOs\AttendanceDto.cs" />
+    <Compile Include="DTOs\FollowingDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202303201202224_Init_ASP_IdentityModel.cs" />
-    <Compile Include="Migrations\202303201202224_Init_ASP_IdentityModel.designer.cs">
-      <DependentUpon>202303201202224_Init_ASP_IdentityModel.cs</DependentUpon>
+    <Compile Include="Migrations\202305060145411_AllTable.cs" />
+    <Compile Include="Migrations\202305060145411_AllTable.designer.cs">
+      <DependentUpon>202305060145411_AllTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202303210049524_AlterProduct_Table.cs" />
-    <Compile Include="Migrations\202303210049524_AlterProduct_Table.designer.cs">
-      <DependentUpon>202303210049524_AlterProduct_Table.cs</DependentUpon>
+    <Compile Include="Migrations\202305060645484_AddAttendance.cs" />
+    <Compile Include="Migrations\202305060645484_AddAttendance.designer.cs">
+      <DependentUpon>202305060645484_AddAttendance.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\Following.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -199,6 +215,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Ultils\Ultils.cs" />
+    <Compile Include="ViewModel\NewsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Content\startbootstrap-sb-admin-gh-pages\401.html" />
@@ -227,6 +244,51 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Database1.mdf" />
+    <Content Include="Content\Layout\blog.html" />
+    <Content Include="Content\Layout\Contact_us.html" />
+    <Content Include="Content\Layout\css\animate.css" />
+    <Content Include="Content\Layout\css\bootstrap.css" />
+    <Content Include="Content\Layout\css\media_query.css" />
+    <Content Include="Content\Layout\css\owl.carousel.css" />
+    <Content Include="Content\Layout\css\owl.theme.default.css" />
+    <Content Include="Content\Layout\css\style_1.css" />
+    <Content Include="Content\Layout\images\10-1-1-875x500.jpg" />
+    <Content Include="Content\Layout\images\32-450x260.jpg" />
+    <Content Include="Content\Layout\images\39-324x235.jpg" />
+    <Content Include="Content\Layout\images\abigail-keenan-65477.jpg" />
+    <Content Include="Content\Layout\images\allef-vinicius-108153.jpg" />
+    <Content Include="Content\Layout\images\ariel-lustre-208615.jpg" />
+    <Content Include="Content\Layout\images\camila-cordeiro-114636.jpg" />
+    <Content Include="Content\Layout\images\country.png" />
+    <Content Include="Content\Layout\images\download %281%29.jpg" />
+    <Content Include="Content\Layout\images\download %282%29.jpg" />
+    <Content Include="Content\Layout\images\download.jpg" />
+    <Content Include="Content\Layout\images\footer_sub_tipik.png" />
+    <Content Include="Content\Layout\images\joe-gardner-75333.jpg" />
+    <Content Include="Content\Layout\images\logo.png" />
+    <Content Include="Content\Layout\images\logowhite.png" />
+    <Content Include="Content\Layout\images\nathan-mcbride-229637.jpg" />
+    <Content Include="Content\Layout\images\nick-karvounis-78711.jpg" />
+    <Content Include="Content\Layout\images\office-768x512.jpg" />
+    <Content Include="Content\Layout\images\person_1.jpg" />
+    <Content Include="Content\Layout\images\photo-1449157291145-7efd050a4d0e-578x362.jpg" />
+    <Content Include="Content\Layout\images\ryan-moreno-98837.jpg" />
+    <Content Include="Content\Layout\images\science-578x362.jpg" />
+    <Content Include="Content\Layout\images\seth-doyle-133175.jpg" />
+    <Content Include="Content\Layout\images\vil-son-35490.jpg" />
+    <Content Include="Content\Layout\images\white_logo.png" />
+    <Content Include="Content\Layout\images\zack-minor-15104.jpg" />
+    <Content Include="Content\Layout\index.html" />
+    <Content Include="Content\Layout\js\bootstrap.js" />
+    <Content Include="Content\Layout\js\jquery.stellar.min.js" />
+    <Content Include="Content\Layout\js\jquery.waypoints.min.js" />
+    <Content Include="Content\Layout\js\main.js" />
+    <Content Include="Content\Layout\js\modernizr-3.5.0.min.js" />
+    <Content Include="Content\Layout\js\owl.carousel.min.js" />
+    <Content Include="Content\Layout\LICENSE.txt" />
+    <Content Include="Content\Layout\README.txt" />
+    <Content Include="Content\Layout\single.html" />
     <Content Include="Content\SanPham\assets\css\cart.css" />
     <Content Include="Content\SanPham\assets\css\product.css" />
     <Content Include="Content\SanPham\assets\css\reset.css" />
@@ -236,6 +298,7 @@
     <Content Include="Content\SanPham\assets\css\sign-up.css" />
     <Content Include="Content\SanPham\assets\css\style.css" />
     <Content Include="Content\SanPham\assets\img\BG-Register.jpg" />
+    <Content Include="Content\SanPham\assets\img\BG-Register.png" />
     <Content Include="Content\SanPham\assets\img\BG-Store.jpg" />
     <Content Include="Content\SanPham\assets\img\hinh1.jpg" />
     <Content Include="Content\SanPham\assets\img\hinh2.jpg" />
@@ -246,6 +309,7 @@
     <Content Include="Content\SanPham\assets\img\ảnh giày\af1.jpg" />
     <Content Include="Content\SanPham\assets\img\ảnh giày\airmax90.jpeg" />
     <Content Include="Content\SanPham\assets\img\ảnh giày\airzoom.jpeg" />
+    <Content Include="Content\SanPham\assets\img\ảnh giày\BG-Register.jpg" />
     <Content Include="Content\SanPham\assets\img\ảnh giày\Crep-Cure.jpg" />
     <Content Include="Content\SanPham\assets\img\ảnh giày\Crep-era.jpeg" />
     <Content Include="Content\SanPham\assets\img\ảnh giày\Crep-insole.jpeg" />
@@ -333,6 +397,9 @@
     <Content Include="Content\SanPham\.git\objects\f9\ff9509e9724b2d8241bf6c0fa600f49b21a9c5" />
     <Content Include="Content\SanPham\.git\refs\heads\main" />
     <Content Include="Content\SanPham\.git\refs\remotes\origin\main" />
+    <Content Include="Content\Layout\css\bootstrap.css.map" />
+    <Content Include="Content\Layout\css\style_1.css.map" />
+    <Content Include="Content\Layout\sass\style_1.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -345,9 +412,19 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Views\Product\Search.cshtml" />
+    <Content Include="Views\Product\IndexCate.cshtml" />
+    <Content Include="Views\Product\Business.cshtml" />
+    <Content Include="Views\Product\Technology.cshtml" />
+    <Content Include="Views\Product\World.cshtml" />
+    <Content Include="Views\Product\Law.cshtml" />
+    <Content Include="Views\Product\Sport.cshtml" />
+    <Content Include="Views\Product\Education.cshtml" />
+    <Content Include="Views\Product\Social.cshtml" />
+    <Content Include="Views\Product\Attending.cshtml" />
     <None Include="Views\Shared\Signin.cshtml" />
     <None Include="Views\Shared\Signup.cshtml" />
     <None Include="Views\Shared\_Search.cshtml" />
+    <None Include="Views\Shared\blog.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -394,6 +471,7 @@
     <Folder Include="Content\SanPham\.git\objects\info\" />
     <Folder Include="Content\SanPham\.git\objects\pack\" />
     <Folder Include="Content\SanPham\.git\refs\tags\" />
+    <Folder Include="Views\Followings\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -409,11 +487,14 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202303201202224_Init_ASP_IdentityModel.resx">
-      <DependentUpon>202303201202224_Init_ASP_IdentityModel.cs</DependentUpon>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202305060145411_AllTable.resx">
+      <DependentUpon>202305060145411_AllTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303210049524_AlterProduct_Table.resx">
-      <DependentUpon>202303210049524_AlterProduct_Table.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202305060645484_AddAttendance.resx">
+      <DependentUpon>202305060645484_AddAttendance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

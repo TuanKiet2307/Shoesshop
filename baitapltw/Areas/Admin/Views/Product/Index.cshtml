@@ -13,19 +13,19 @@
     <thead>
         <tr>
             <th>
-                Hãng
+                Thể Loại
             </th>
             <th>
-                Tên Giày
+                Tên Bài báo
             </th>
             <th>
-                Giá
+                Mô Tả
             </th>
             <th>
                 Ảnh
             </th>
             <th>
-                Mô Tả
+                Chi Tiết
             </th>
             <th>
                 Option
@@ -43,7 +43,7 @@
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
-                    <div class="price">@string.Format(new CultureInfo("vi-VN", false), "{0:c0}", item.Price)</div>
+                    @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
                     <img src="@item.FeatureImage" />

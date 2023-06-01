@@ -1,6 +1,9 @@
 ﻿using baitapltw.Models;
+using baitapltw.ViewModel;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -16,6 +19,38 @@ namespace baitapltw.Controllers
         {
             var product = dbContext.Products.FirstOrDefault(x => x.Id == id);
             return View(product);
+        }
+        public ActionResult IndexCate()
+        {
+            return View(dbContext.Products.ToList());
+        }
+        public ActionResult Business()
+        {
+            return View(dbContext.Products.ToList());
+        }
+        public ActionResult Technology()
+        {
+            return View(dbContext.Products.ToList());
+        }
+        public ActionResult World()
+        {
+            return View(dbContext.Products.ToList());
+        }
+        public ActionResult Law()
+        {
+            return View(dbContext.Products.ToList());
+        }
+        public ActionResult Sport()
+        {
+            return View(dbContext.Products.ToList());
+        }
+        public ActionResult Education()
+        {
+            return View(dbContext.Products.ToList());
+        }
+        public ActionResult Social()
+        {
+            return View(dbContext.Products.ToList());
         }
         private int isExist(int id)
         {
@@ -88,6 +123,18 @@ namespace baitapltw.Controllers
                 product = product.Where(x => x.Title.Contains(strSearch)).ToList();
             }
             return View(product);
+        }
+        [Authorize]
+        public ActionResult Attending()
+        {
+            var userId = User.Identity.GetUserId();
+            var product = dbContext.Attendances.Where(a => a.AttendeeId == userId).Select(a => a.Product).Include(l => l.Category).ToList();
+            var viewModel = new NewsViewModel
+            {
+                UpcommingProducts = product,
+                ShowAction = User.Identity.IsAuthenticated
+            };
+            return View(viewModel);
         }
 
     }

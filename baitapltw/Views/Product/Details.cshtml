@@ -5,68 +5,63 @@
 }
 @using System.Globalization;
 
-@*<div class="contact_section layout_padding">
-        <div class="container">
-            <div class="contact_section_2">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="mail_section_1">
-                            <div class="card" style="width: 18rem;">
-                                <img src="@Model.FeatureImage" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">@Model.Title</h5>
-                                    <p class="card-text">@Model.Des</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">@Model.Id</li>
-                                    <li class="list-group-item">@Model.Price</li>
-                                    <li class="list-group-item">@Model.Category.Title</li>
-                                </ul>
-                                <div class="card-body">
-                                    <a href="#" class="card-link">@baitapltw.Ultils.Ultils.NumberToText((double)Model.Price)</a>
-                                </div>
-                            </div>
-                            <div class="send_bt"><a href="#">Đặt Hàng</a></div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="map_main">
-                            <div class="map-responsive">
-                                <img src="@Model.FeatureImage" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+
+<div id="fh5co-single-content" class="container-fluid pb-4 pt-4 paddding">
+    <div class="container paddding">
+        <div class="row mx-0">
+            <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft">
+                <img src="@Model.FeatureImage" style="width:80%" alt="Free HTML5 by FreeHTMl5.co">
+                <h3>January 1, 2018</h3>
+                <h2>@Model.Title</h2>
+                <h3>@Model.Des</h3>
+                <h3>@Model.Detail</h3>
             </div>
-        </div>
-    </div>*@
-<div class="product">
-    <div class="body">
-        <div class="left-info">
-            <img src="@Model.FeatureImage" class="img-shoes">
-        </div>
-        <div class="right-info">
-            <div class="product-rating">
-                <div class="rating">
-                    <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
-                    <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
-                    <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
-                    <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
-                    <i class="fa-solid fa-star" style="color: rgb(255, 195, 0)"></i>
+            <button class="btn btn-default btn-sm js-toggle-follow" data-user-id="@Model.Id">Follow</button>
+            <button data-course-id="@Model.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
+            <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
+                <div>
+                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Tags</div>
                 </div>
-            </div>
-            <h1 class="shoes-title">@Model.Title</h1>
-            <p class="product-category">Mã sản phẩm: <strong>@Model.Id</strong></p>
-            <p class="product-category">Loại sản phẩm: <strong>@Model.Category.Title</strong></p>
-            <p class="product-category">Mô tả sản phẩm: <strong>@Model.Des</strong></p>
-            <h3 class="product-price">@string.Format(new CultureInfo("vi-VN", false), "{0:c0}", @Model.Price)</h3>
-            <div class="addToCart">
-                <div class="btn-pay">
-                    <a href="/Product/AddCart/@Model.Id"><div class="btn-left btn-buy"><i class="fa-solid fa-cart-shopping"></i> Thêm Vào Giỏ </div></a>
+                <div class="clearfix"></div>
+                <div class="fh5co_tags_all">
+                    <a href="/Product/Business" class="fh5co_tagg">Business</a>
+                    <a href="/Product/Technology" class="fh5co_tagg">Technology</a>
+                    <a href="/Product/World" class="fh5co_tagg">World</a>
+                    <a href="/Product/Law" class="fh5co_tagg">Law</a>
+                    <a href="/Product/Sport" class="fh5co_tagg">Sport</a>
+                    <a href="/Product/Education" class="fh5co_tagg">Education</a>
+                    <a href="/Product/Social" class="fh5co_tagg">Social</a>
                 </div>
+
             </div>
-            <p class="desc-info">Hoặc đặt mua: <a href="#!" style="color: red ; font-size:30px">0909.XXX.XXX</a> (Tư vấn Miễn phí)</p>
         </div>
     </div>
 </div>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $(".js-toggle-attendance").click(function (e) {
+                var button = $(e.target);
+                $post("/api/attendances", { courseId: button.attr("data-course-id") }).done(function () {
+                    button.removeClass("btn-default").addClass("btn-info").text("Going");
+                }).fail(function () {
+                    alert("Something failed!");
+                });
+            });
+            $(".js-toggle-follow").click(function (e) {
+                var button = $(e.target);
+                $post("/api/followings", { FolloweeId: button.attr("data-user-id") }).done(function () {
+                    button.text("Following");
+                }).fail(function () {
+                    alert("Something failed!");
+                });
+            });
+        });
+    </script>
+}
+
 

@@ -61,7 +61,7 @@ namespace baitapltw.Areas.Admin.Controllers
             string path = Path.Combine(Server.MapPath("~/Content/SanPham/assets/img/"), Path.GetFileName(FeatureImage.FileName));
             FeatureImage.SaveAs(path);
             updateProduct.Title = product.Title;
-            updateProduct.Price = product.Price;
+            updateProduct.Detail = product.Detail;
             updateProduct.ProductCateId = product.ProductCateId;
             updateProduct.Des = product.Des;
             updateProduct.FeatureImage = product.FeatureImage;
